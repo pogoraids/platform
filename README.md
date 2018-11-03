@@ -1,1 +1,1 @@
-# platform
+## Graphql Template for Typescript
