@@ -4,6 +4,7 @@ import { ENV } from '../config/env.config';
 export const sequelize = new Sequelize({
         host: ENV.DB_HOST,
         database: ENV.DB_NAME,
+        host: ENV.DB_HOST,
         port: +ENV.DB_PORT,
         dialect: ENV.DB_DIALECT,
         username: ENV.DB_USER,
