@@ -1,9 +1,11 @@
-import { Table, Column, Model, HasMany, BelongsTo, ForeignKey, BeforeSave } from 'sequelize-typescript';
+import { Table, Column, Model, HasMany, BelongsTo, ForeignKey, BeforeSave, BelongsToMany } from 'sequelize-typescript';
 import { Company } from "./company.model";
 import * as bcrypt from 'bcrypt';
 import to from 'await-to-js';
 import * as jsonwebtoken from'jsonwebtoken';
 import { ENV } from '../config';
+// import { Pod } from './pod.model';
+// import PodUser from './podUser.model';
 
 @Table({timestamps: true})
 export class User extends Model<User> {
@@ -29,6 +31,12 @@ export class User extends Model<User> {
 
   @BelongsTo(() => Company)
   company: Company;
+
+  // @BelongsToMany(() => Pod, () => PodUser, 'podId')
+  // pod: Pod[];
+  
+  // @ForeignKey(() => Pod)
+  // podId: number;
 
   jwt: string;
   login: boolean;

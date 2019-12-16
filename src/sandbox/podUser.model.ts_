@@ -1,0 +1,17 @@
+import { Model, Table, Column, ForeignKey } from "sequelize-typescript";
+import { Pod } from "./pod.model";
+import { User } from "./user.model";
+
+@Table({timestamps: true})
+export default class PodUser extends Model<PodUser> {
+    @Column({ primaryKey: true, autoIncrement: true})
+    id: number;
+
+    @ForeignKey(() => User)
+    @Column({ primaryKey: true})
+    userId: number;
+
+    @ForeignKey(() => Pod)
+    @Column({ primaryKey: true})
+    podId: number;
+}

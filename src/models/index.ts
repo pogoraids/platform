@@ -18,4 +18,9 @@ export const sequelize = new Sequelize({
 });
 export { User } from './user.model';
 export { Company } from './company.model';
+// export { Pod } from './pod.model';
+// export * from './podUser.model';
+// export * from './tournamentSettings.model';
+// export { Tournament } from './tournament.model';
+export { Banlist } from './banlist.model';
 

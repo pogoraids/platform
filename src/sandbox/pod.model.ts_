@@ -1,0 +1,33 @@
+import { Table, Column, Model, HasMany, ForeignKey } from 'sequelize-typescript';
+import { User } from './user.model';
+
+@Table({timestamps: true})
+export class Pod extends Model<Pod> {
+    @Column({ primaryKey: true})
+    id: number;
+
+    @Column
+    name: string;
+
+    @Column
+    mechanic: 'PvP' | 'PvE';
+
+    @HasMany(() => User)
+    members: User[];
+
+    @ForeignKey(() => User)
+    userId: User[];
+
+    // @HasMany(() => Submission)
+    // submissions: Submission[];
+
+    // @ForeignKey(() => Submission)
+    @Column
+    subId: number;
+
+    @Column
+    iconImageUrl: string;
+
+    @Column
+    mechanicFormat: 'Great' | 'Ultra' | 'Master' | 'Solo' | 'Team' | 'Custom';
+}

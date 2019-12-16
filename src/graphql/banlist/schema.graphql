@@ -1,0 +1,23 @@
+type Banlist {
+    id: Int!
+    dexId: Int!
+    species: String
+    allowed: Boolean
+}
+
+input BanlistInput {
+    id: Int!
+    dexId: Int
+    species: String
+    allowed: Boolean
+}
+
+type Query {
+    getFullBanlist(id: Int!): [Banlist]
+    getAllowedBanlist(id: Int!): [Banlist]
+}
+
+type Mutation {
+    createBanlist(data: BanlistInput): Banlist
+    bulkCreateBanList(data: [BanlistInput]): [Banlist]
+}
