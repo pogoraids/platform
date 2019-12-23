@@ -18,6 +18,6 @@ type Query {
 }
 
 type Mutation {
-    createBanlist(data: BanlistInput): Banlist
+    createBanlist(data: BanlistInput): [Banlist]
     bulkCreateBanList(data: [BanlistInput]): [Banlist]
 }

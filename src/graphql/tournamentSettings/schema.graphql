@@ -1,0 +1,32 @@
+type TournamentSettings {
+    id: Int!
+    limit: Int
+    onlySolo: Boolean
+    scoringType: String
+    timeOrder: Boolean
+    multiPod: Boolean
+    customScoringModel: String
+    masterSheet: String
+    banlistId: Int
+    banlist: [Banlist]
+}
+
+input TournamentSettingsInput {
+    limit: Int
+    onlySolo: Int
+    scoringType: String
+    timeOrder: Boolean
+    multiPod: Boolean
+    customScoringModel: String
+    masterSheet: String
+    banlistId: Int
+}
+
+type Query {
+    getSettings(id: Int): [TournamentSettings]
+}
+
+type Mutation {
+    createSettings(data: TournamentSettingsInput): TournamentSettings
+    modifySettings(id: Int, data: TournamentSettingsInput): TournamentSettings
+}

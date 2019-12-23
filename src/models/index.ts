@@ -13,14 +13,14 @@ export const sequelize = new Sequelize({
         storage: ':memory:',
         modelPaths: [__dirname + '/*.model.ts'],
         modelMatch: (filename, member) => {
-           return filename.substring(0, filename.indexOf('.model')) === member.toLowerCase();
+            return filename.toLowerCase().substring(0, filename.indexOf('.model')) === member.toLowerCase();
         },
 });
 export { User } from './user.model';
 export { Company } from './company.model';
 // export { Pod } from './pod.model';
 // export * from './podUser.model';
-// export * from './tournamentSettings.model';
+export { TournamentSettings } from './tournamentSettings.model';
 // export { Tournament } from './tournament.model';
 export { Banlist } from './banlist.model';
 

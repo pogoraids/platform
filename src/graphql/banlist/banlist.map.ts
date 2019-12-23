@@ -1,6 +1,5 @@
 import { resolver } from 'graphql-sequelize';
-// import TournamentSettings from '../../models/tournamentSettings.model';
+import { Banlist } from '../../models';
 
 export const BanlistMap = {
-    // fromSetting: resolver(TournamentSettings.associations.banlist),
 };

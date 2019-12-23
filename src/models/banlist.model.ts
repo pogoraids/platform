@@ -1,13 +1,12 @@
-import { Table, Model, Column, BelongsTo, ForeignKey, PrimaryKey } from 'sequelize-typescript';
-// import TournamentSettings from './tournamentSettings.model';
+import { Table, Model, Column, BelongsTo, ForeignKey, PrimaryKey, Unique, HasOne, AllowNull } from 'sequelize-typescript';
+import { TournamentSettings } from './tournamentSettings.model';
 
 @Table({timestamps: true})
 export class Banlist extends Model<Banlist> {
     @Column({ primaryKey: true})
     id: number;
 
-    @PrimaryKey
-    @Column
+    @Column({primaryKey: true})
     dexId: number;
 
     @Column
@@ -16,10 +15,8 @@ export class Banlist extends Model<Banlist> {
     @Column
     allowed: boolean;
 
-    // @BelongsTo(() => TournamentSettings)
-    // fromSetting: TournamentSettings;
-
-    // @ForeignKey(() => TournamentSettings)
-    // @Column
-    // settingId: number;
+    @ForeignKey(() => TournamentSettings)
+    @PrimaryKey
+    @Column
+    settingsId: number;
 }
