@@ -4,8 +4,8 @@ import { Banlist } from '../../models';
 export const Query = {
     getFullBanlist: resolver(Banlist),
     getAllowedBanlist: resolver(Banlist, {
-        before: async(findOptions, { id }, {banlist}) => {
-            findOptions.where = { id, allowed: true };
+        before: async(findOptions, { id, settingsId }, {banlist}) => {
+            findOptions.where = { id, settingsId, allowed: true };
             return findOptions;
         },
         after: (banlist) => {

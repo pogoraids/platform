@@ -17,12 +17,19 @@ export const Mutation = {
       const banlist = await Banlist.findAll({where: { id: tournamentSettings.banlistId}});
       
       (banlist as any).forEach(async (b: Banlist) => {
-        b.settingsId = tournamentSettings.id;
-        let [err, ins] = to(await b.save());
+        let newB: any = {
+          id: b.id,
+          allowed: b.allowed,
+          species: b.species,
+          dexId: b.dexId,
+          settingsId: tournamentSettings.id
+        };
+        
+        let [err, ins] = await to(Banlist.create(newB));
 
         if (err) { throw err; }
       });
-      
+
       return tournamentSettings;
     }
   }),

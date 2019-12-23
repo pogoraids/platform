@@ -12,6 +12,7 @@ type TournamentSettings {
 }
 
 input TournamentSettingsInput {
+    id: Int
     limit: Int
     onlySolo: Int
     scoringType: String

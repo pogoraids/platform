@@ -3,6 +3,7 @@ type Banlist {
     dexId: Int!
     species: String
     allowed: Boolean
+    settingsId: Int
 }
 
 input BanlistInput {
@@ -10,11 +11,12 @@ input BanlistInput {
     dexId: Int
     species: String
     allowed: Boolean
+    settingsId: Int
 }
 
 type Query {
-    getFullBanlist(id: Int!): [Banlist]
-    getAllowedBanlist(id: Int!): [Banlist]
+    getFullBanlist(id: Int!, settingsId: Int): [Banlist]
+    getAllowedBanlist(id: Int!, settingsId: Int): [Banlist]
 }
 
 type Mutation {
