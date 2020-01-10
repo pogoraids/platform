@@ -18,5 +18,5 @@ export class Banlist extends Model<Banlist> {
     @ForeignKey(() => TournamentSettings)
     @PrimaryKey
     @Column
-    settingsId: number;
+    settingsId: string;
 }

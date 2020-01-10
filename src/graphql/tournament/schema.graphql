@@ -1,0 +1,32 @@
+type Tournament {
+    id: String!
+    name: String
+    tallMode: Boolean
+    showAdd: Boolean
+    mechanic: String
+    members: [User]
+    pods: [Pod]
+    settings: TournamentSettings
+    createdAt: DateTime
+}
+
+input TournamentInput {
+    id: String
+    name: String
+    tallMode: Boolean
+    showAdd: Boolean
+    mechanic: String
+    userId: Int
+    podId: String
+    settingsId: String
+}
+
+type Query {
+    getAllTournaments: [Tournament]
+    getTournament(id: String): Tournament
+}
+
+type Mutation {
+    createTournament(data: TournamentInput): Tournament
+    modifyTournament(id: String, data: TournamentInput): Tournament
+}

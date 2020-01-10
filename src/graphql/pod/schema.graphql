@@ -1,0 +1,33 @@
+type Pod {
+    id: String
+    tournamentId: String
+    name: String
+    mechanic: String
+    members: [User]
+    iconImageUrl: String
+    mechanicFormat: String
+    createdAt: String
+    tournament: Tournament
+}
+
+input PodInput {
+    id: String!
+    tournamentId: String
+    name: String
+    mechanic: String
+    userId: Int
+    iconImageUrl: String
+    mechanicFormat: String
+}
+
+type Query {
+    getAllPods: [Pod]
+    getUserPods(userId: Int): [Pod]
+    getTournamentPods(tournamentId: String): [Pod]
+    getPod(id: String): Pod
+}
+
+type Mutation {
+    createPod(data: PodInput): Pod
+    modifyPod(id: String, data: PodInput): Pod
+}

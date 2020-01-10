@@ -1,10 +1,15 @@
-import { Table, Column, Model, HasMany, ForeignKey } from 'sequelize-typescript';
+import { Table, Column, Model, HasMany, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { User } from './user.model';
+import { Tournament } from './tournament.model';
 
 @Table({timestamps: true})
 export class Pod extends Model<Pod> {
     @Column({ primaryKey: true})
-    id: number;
+    id: string;
+
+    @ForeignKey(() => Tournament)
+    @Column
+    tournamentId: string;
 
     @Column
     name: string;
@@ -16,7 +21,7 @@ export class Pod extends Model<Pod> {
     members: User[];
 
     @ForeignKey(() => User)
-    userId: User[];
+    userId: String;
 
     // @HasMany(() => Submission)
     // submissions: Submission[];
@@ -30,4 +35,7 @@ export class Pod extends Model<Pod> {
 
     @Column
     mechanicFormat: 'Great' | 'Ultra' | 'Master' | 'Solo' | 'Team' | 'Custom';
+
+    @BelongsTo(() => Tournament)
+    tournament: Tournament;
 }

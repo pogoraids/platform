@@ -1,5 +1,5 @@
 type TournamentSettings {
-    id: Int!
+    id: String!
     limit: Int
     onlySolo: Boolean
     scoringType: String
@@ -9,10 +9,11 @@ type TournamentSettings {
     masterSheet: String
     banlistId: Int
     banlist: [Banlist]
+    tournament: Tournament
 }
 
 input TournamentSettingsInput {
-    id: Int
+    id: String
     limit: Int
     onlySolo: Int
     scoringType: String
@@ -21,13 +22,14 @@ input TournamentSettingsInput {
     customScoringModel: String
     masterSheet: String
     banlistId: Int
+    tournamentId: String
 }
 
 type Query {
-    getSettings(id: Int): [TournamentSettings]
+    getSettings(id: String): [TournamentSettings]
 }
 
 type Mutation {
     createSettings(data: TournamentSettingsInput): TournamentSettings
-    modifySettings(id: Int, data: TournamentSettingsInput): TournamentSettings
+    modifySettings(id: String, data: TournamentSettingsInput): TournamentSettings
 }

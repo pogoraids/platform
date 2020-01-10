@@ -5,6 +5,8 @@ type User {
   lastName: String
   company: Company
   jwt: String @isAuthUser
+  pods: [Pod]
+  tournaments: [Tournament]
 }
 
 input UserInput {

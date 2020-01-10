@@ -1,4 +1,4 @@
-import { Table, Column, Model, HasMany, ForeignKey, HasOne } from 'sequelize-typescript';
+import { Table, Column, Model, HasMany, ForeignKey, HasOne, Unique } from 'sequelize-typescript';
 import { User } from './user.model';
 import { TournamentSettings } from './tournamentSettings.model';
 import { Pod } from './pod.model';
@@ -6,8 +6,9 @@ import { Pod } from './pod.model';
 @Table({ timestamps: true })
 export class Tournament extends Model<Tournament> {
     @Column({ primaryKey: true })
-    id: number;
+    id: string;
 
+    @Unique
     @Column
     name: string;
 
@@ -29,7 +30,7 @@ export class Tournament extends Model<Tournament> {
 
     @ForeignKey(() => Pod)
     @Column
-    podId: number;
+    podId: string;
 
     @HasMany(() => Pod)
     pods: Pod[];
@@ -39,5 +40,5 @@ export class Tournament extends Model<Tournament> {
 
     @ForeignKey(() => TournamentSettings)
     @Column
-    settingsId: number;    
+    settingsId: string;    
 }

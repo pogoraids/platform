@@ -1,10 +1,11 @@
-import { Table, Column, Model, HasOne, ForeignKey, HasMany, BelongsToMany } from 'sequelize-typescript';
+import { Table, Column, Model, HasOne, ForeignKey, HasMany, BelongsToMany, BelongsTo } from 'sequelize-typescript';
 import { Banlist } from './banlist.model';
+import { Tournament } from './tournament.model';
 
 @Table({timestamps: true})
 export class TournamentSettings extends Model<TournamentSettings> {
-    @Column({ primaryKey: true, autoIncrement: true})
-    id: number;
+    @Column({ primaryKey: true})
+    id: string;
 
     @Column
     limit: number;
@@ -33,4 +34,11 @@ export class TournamentSettings extends Model<TournamentSettings> {
 
     @HasMany(() => Banlist)
     banlist: Banlist;
+
+    @ForeignKey(() => Tournament)
+    @Column
+    tournamentId: string;
+
+    @BelongsTo(() => Tournament)
+    tournament: Tournament;
 }

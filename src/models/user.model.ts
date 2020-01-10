@@ -4,6 +4,8 @@ import * as bcrypt from 'bcrypt';
 import to from 'await-to-js';
 import * as jsonwebtoken from'jsonwebtoken';
 import { ENV } from '../config';
+import { Pod } from './pod.model';
+import { Tournament } from './tournament.model';
 // import { Pod } from './pod.model';
 // import PodUser from './podUser.model';
 
@@ -32,11 +34,19 @@ export class User extends Model<User> {
   @BelongsTo(() => Company)
   company: Company;
 
-  // @BelongsToMany(() => Pod, () => PodUser, 'podId')
-  // pod: Pod[];
+  @BelongsTo(() => Pod)
+  pods: Pod[];
   
-  // @ForeignKey(() => Pod)
-  // podId: number;
+  @ForeignKey(() => Pod)
+  @Column
+  podId: string;
+
+  @ForeignKey(() => Tournament)
+  @Column
+  tournamentId: string;
+
+  @BelongsTo(() => Tournament)
+  tournaments: Tournament[];
 
   jwt: string;
   login: boolean;
